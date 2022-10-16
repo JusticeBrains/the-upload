@@ -1,4 +1,3 @@
-{% load compress %}
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    {% compress css %}
-        {% tailwind_css %}
-        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css"/>
-    {% endcompress %}
+    {% tailwind_css %}
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css"
     <title>{% block title %}{% endblock title %}</title>
 
 </head>
@@ -25,10 +22,7 @@
 {% block footer %}{% endblock footer %}
 
 
-
-{% compress css %}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
-{% endcompress %}
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </body>
 </html>
