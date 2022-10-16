@@ -5,5 +5,5 @@ app_name = 'upload'
 
 urlpatterns = [
     path('uploads/', meeting_list, name='upload-list'),
-    path('add/',upload_document, name='upload'),
+    path('add/', upload_document, name='upload'),
 ]

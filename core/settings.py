@@ -1,13 +1,11 @@
-
-
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 import os
 from decouple import config
 import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -20,7 +18,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['the-upload-production.up.railway.app']
 
-
 # Application definition
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -30,7 +27,7 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-THIRD_PARTY_APPS =[
+THIRD_PARTY_APPS = [
     'crispy_forms',
     'crispy_tailwind',
     'allauth',
@@ -40,7 +37,7 @@ THIRD_PARTY_APPS =[
 
 ]
 
-LOCAL_APPS =[
+LOCAL_APPS = [
     'users.apps.UsersConfig',
     'upload.apps.UploadConfig',
     'pages.apps.PagesConfig',
@@ -79,20 +76,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASE_URL=os.getenv('DATABASE_URL')
+DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
 }
 
 REDIS_LOCATION = os.getenv('REDIS_LOCATION')
 CACHES = {
-    'default':{
-        'BACKEND':'django_redis.cache.RedisCache',
-        'LOCATION':config('REDIS_LOCATION'),
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': config('REDIS_LOCATION'),
 
     }
 }
@@ -117,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -129,13 +124,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'theme/static/'
-STATICFILES_DIRS = [ BASE_DIR / 'theme/static']
-STATICFILES_STORAGE = [
+STATICFILES_DIRS = [BASE_DIR / 'theme/static']
+STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
@@ -148,16 +142,16 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CustomUser
-AUTH_USER_MODEL='users.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Tailwind config
 TAILWIND_APP_NAME = 'theme'
-TAILWIND_CSS_PATH= 'theme/static/css/dist/styles.css'
+TAILWIND_CSS_PATH = 'theme/static/css/dist/styles.css'
 # Crispy config
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
 CRISPY_TEMPLATE_PACK = 'tailwind'
 
-INTERNAL_IPS = ['127.0.0.1',]
+INTERNAL_IPS = ['127.0.0.1', ]
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',

@@ -4,6 +4,7 @@ from upload.models import Upload
 from .forms import MeetingModelForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
 class MeetingPageListView(ListView):
     model = Upload
     paginate_by = 5
@@ -11,18 +12,19 @@ class MeetingPageListView(ListView):
     context_object_name = 'meetings'
     queryset = Upload.objects.all()
 
+
 def meeting_list(request):
-    meeting_list = Upload.objects.all()
-    page = request.GET.get('page',1)
-    paginator = Paginator(meeting_list, 10)
+    list_upload = Upload.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(list_upload, 10)
     try:
-       meetings = paginator.page(page)
+        meetings = paginator.page(page)
     except PageNotAnInteger:
         meetings = paginator.page(1)
     except EmptyPage:
         meetings = paginator.page(paginator.num_pages)
     context = {
-        "meetings":meetings,
+        "meetings": meetings,
     }
     return render(request, 'upload/upload_list.html', context)
 
@@ -53,6 +55,6 @@ def upload_document(request):
     else:
         form = MeetingModelForm()
     context = {
-        'form':form
+        'form': form
     }
-    return render(request, 'upload/upload_document.html',context)
+    return render(request, 'upload/upload_document.html', context)
