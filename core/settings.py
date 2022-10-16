@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['the-upload-production.up.railway.app']
+ALLOWED_HOSTS = ['the-upload-production.up.railway.app','127.0.0.1']
 
 # Application definition
 DJANGO_APPS = [
@@ -127,13 +127,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'theme/static/'
-STATICFILES_DIRS = [BASE_DIR / 'theme/static']
+STATIC_URL = '/theme/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'theme/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'theme/staticfiles')
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-STATIC_ROOT = BASE_DIR / 'theme/staticfiles'
+
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Default primary key field type
@@ -146,7 +147,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 # Tailwind config
 TAILWIND_APP_NAME = 'theme'
-TAILWIND_CSS_PATH = 'theme/static/css/dist/styles.css'
+
 # Crispy config
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
 CRISPY_TEMPLATE_PACK = 'tailwind'
