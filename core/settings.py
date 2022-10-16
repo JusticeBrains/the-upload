@@ -152,7 +152,7 @@ AUTH_USER_MODEL='users.CustomUser'
 
 # Tailwind config
 TAILWIND_APP_NAME = 'theme'
-
+TAILWIND_CSS_PATH= 'theme/static/css/dist/styles.css'
 # Crispy config
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
 CRISPY_TEMPLATE_PACK = 'tailwind'
