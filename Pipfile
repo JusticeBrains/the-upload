@@ -15,6 +15,7 @@ django-allauth = "*"
 psycopg2 = "*"
 django-crispy-forms = "*"
 crispy-tailwind = "*"
+django-compressor = "*"
 
 [dev-packages]
 

@@ -34,6 +34,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'tailwind',
     'django_browser_reload',
+    'compressor',
 
 ]
 
@@ -130,12 +131,17 @@ USE_TZ = True
 STATIC_URL = '/theme/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'theme/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'theme/staticfiles')
+COMPRESS_ROOT = BASE_DIR / 'theme/static'
+
+COMPRESS_ENABLED = True
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 ]
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
