@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['the-upload-production.up.railway.app',]
+ALLOWED_HOSTS = ['the-upload-production.up.railway.app','127.0.0.1']
 
 # Application definition
 DJANGO_APPS = [
@@ -128,9 +128,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'https://cnspfbdfpgwplfqfnexb.supabase.co/storage/v1/object/sign/the-upload/css/styles.css?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ0aGUtdXBsb2FkL2Nzcy9zdHlsZXMuY3NzIiwiaWF0IjoxNjY1OTUyODY3LCJleHAiOjE5ODEzMTI4Njd9.IRJUarMP1pHVZgGQ2RiEPN4os7tbrB_DFBYqCEHFT4U'
+STATIC_URL = 'https://cnspfbdfpgwplfqfnexb.supabase.co/storage/v1/object/sign/the-upload/css/styles.css?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ0aGUtdXBsb2FkL2Nzcy9zdHlsZXMuY3NzIiwiaWF0IjoxNjY1OTUyODY3LCJleHAiOjE5ODEzMTI4Njd9.IRJUarMP1pHVZgGQ2RiEPN4os7tbrB_DFBYqCEHFT4U/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'theme/static')]
-STATIC_ROOT = 'https://cnspfbdfpgwplfqfnexb.supabase.co/storage/v1/object/sign/the-upload/css/styles.css?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ0aGUtdXBsb2FkL2Nzcy9zdHlsZXMuY3NzIiwiaWF0IjoxNjY2MDA5MDA2LCJleHAiOjE5ODEzNjkwMDZ9.FecnttkDPCfegBZFLdx9lF9-tTXBar8BY5-rZlQanGI'
+STATIC_ROOT = os.path.join(BASE_DIR, 'theme/staticfiles')
 
 
 STATICFILES_FINDERS = [
