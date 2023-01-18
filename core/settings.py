@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['the-upload-production.up.railway.app','127.0.0.1']
+ALLOWED_HOSTS = ['the-upload-production.up.railway.app','127.0.0.1', 'localhost']
 
 # Application definition
 DJANGO_APPS = [
@@ -85,6 +85,21 @@ DATABASES = {
     'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=1800)
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':os.getenv('DB_NAME'),
+        'USER' :os.getenv('DB_USER'),
+        'PASSWORD' : os.getenv('DB_PASS'),
+        'PORT' : os.getenv('DB_PORT'),
+        'HOST': os.getenv('DB_HOST')
+        # 'OPTIONS': {
+        #     'service': 'my_service',
+        #     'passfile': '.my_pgpass',
+        # },
+    }
+}
+
 REDIS_LOCATION = os.getenv('REDIS_LOCATION')
 CACHES = {
     'default': {
@@ -128,7 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'https://cnspfbdfpgwplfqfnexb.supabase.co/storage/v1/object/sign/the-upload/css/styles.css?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ0aGUtdXBsb2FkL2Nzcy9zdHlsZXMuY3NzIiwiaWF0IjoxNjY1OTUyODY3LCJleHAiOjE5ODEzMTI4Njd9.IRJUarMP1pHVZgGQ2RiEPN4os7tbrB_DFBYqCEHFT4U/'
+STATIC_URL = 'https://cnspfbdfpgwplfqfnexb.supabase.co/storage/v1/object/sign/the-upload/css/styles.css?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJ0aGUtdXBsb2FkL2Nzcy9zdHlsZXMuY3NzIiwiaWF0IjoxNjc0MDgwMTc2LCJleHAiOjE3MDU2MTYxNzZ9.hpaPtdp0Dv5_UHlSPCJyeAKMie-Yh440KXcyH1rExpk&t=2023-01-18T22%3A16%3A14.185Z/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'theme/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'theme/staticfiles')
 
